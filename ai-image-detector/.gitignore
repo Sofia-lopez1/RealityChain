@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/ml_models/*.pth
+data/real/*
+data/fake/*
+demo_data/
+!data/real/.gitkeep
+!data/fake/.gitkeep
+.DS_Store

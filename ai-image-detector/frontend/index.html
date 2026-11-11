@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detector de imágenes IA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo" aria-hidden="true"></span> Detector IA</div>
+    <span id="status" class="badge badge-wait">Conectando…</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>¿Real o creada con IA?</h1>
+      <p>Sube una imagen y el modelo estimará la probabilidad de que haya sido generada por inteligencia artificial.</p>
+    </section>
+
+    <div id="notice" class="notice" hidden></div>
+
+    <section class="card" id="uploader">
+      <label id="dropzone" class="dropzone" tabindex="0">
+        <input id="file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+        <div class="dz-icon" aria-hidden="true">⬆</div>
+        <strong>Arrastra una imagen aquí</strong>
+        <span>o haz clic para elegirla · también puedes pegarla con Ctrl+V</span>
+        <small>JPG, PNG o WEBP · máx. <span id="maxmb">10</span> MB</small>
+      </label>
+
+      <div id="preview" class="preview" hidden>
+        <img id="previewImg" alt="Vista previa de la imagen seleccionada">
+        <div class="preview-side">
+          <p id="fileMeta" class="muted"></p>
+          <div class="actions">
+            <button id="analyze" class="btn primary" type="button">Analizar imagen</button>
+            <button id="reset" class="btn" type="button">Cambiar imagen</button>
+          </div>
+          <p id="error" class="error" role="alert" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="result" hidden aria-live="polite">
+      <div class="verdict" id="verdict">
+        <span id="verdictDot" class="dot"></span>
+        <div>
+          <h2 id="verdictTitle"></h2>
+          <p id="verdictSub" class="muted"></p>
+        </div>
+      </div>
+
+      <div class="meter" aria-hidden="true">
+        <div class="meter-bar"><div id="meterFill" class="meter-fill"></div></div>
+        <div id="thresholdTick" class="tick"></div>
+        <div class="meter-labels"><span>Real</span><span>IA</span></div>
+      </div>
+
+      <dl class="stats">
+        <div><dt>Probabilidad de IA</dt><dd id="pAi">–</dd></div>
+        <div><dt>Certeza</dt><dd id="certainty">–</dd></div>
+        <div><dt>Recortes analizados</dt><dd id="crops">–</dd></div>
+        <div><dt>Tiempo</dt><dd id="time">–</dd></div>
+      </dl>
+
+      <p id="modelInfo" class="muted small"></p>
+      <p class="disclaimer">Es una estimación estadística, no una prueba. Puede equivocarse, sobre todo con generadores distintos a los vistos en el entrenamiento, imágenes muy comprimidas o editadas.</p>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
